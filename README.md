@@ -4,8 +4,8 @@ KB IT's Your Life 의 멤버들과 함께하는 CS 스터디 레포지토리토�
 ## 스터디원
 | 팀장                                                   | 팀원                                                                               |팀원|팀원|
 |:-----------------------------------------------------|:---------------------------------------------------------------------------------|:---|:---|
-| <img src="https://avatars.githubusercontent.com/u/57451700?s=400&u=4a2ad527d88fb1e33715e755ea18e607caf5c048&v=4" width="100px"/> | <img src="https://avatars.githubusercontent.com/u/143686086?v=4" width="100px"/> |팀원|팀원|
-| [정혜선](https://github.com/chunghye98)                 | [김성헌](https://github.com/sungheonkim)                                            |이신영|이가현|
+| <img src="https://avatars.githubusercontent.com/u/57451700?s=400&u=4a2ad527d88fb1e33715e755ea18e607caf5c048&v=4" width="100px"/> | <img src="https://avatars.githubusercontent.com/u/143686086?v=4" width="100px"/> |<img src="https://avatars.githubusercontent.com/u/81401604?v=4" width="100px">|<img src="https://avatars.githubusercontent.com/u/57521555?v=4" width="100px">|
+| [정혜선](https://github.com/chunghye98)                 | [김성헌](https://github.com/sungheonkim)                                            |[이신영](https://github.com/Hello-LSY)|[이가현](https://github.com/lgh9776)|
 
 
 

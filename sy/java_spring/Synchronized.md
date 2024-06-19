@@ -24,9 +24,9 @@ Synchronized 키워드는 동기화를 위한 도구이지만, 항상 효율적�
 
 또한, atomic 패키지에는 원자적 연산을 제공하는 클래스들(AtomicInteger, AtomicLong, AtomicReference 등)이 있으며, 복잡한 동기화 없이도 원자적 연산을 수행할 수 있습니다. 
 
-마지막으로, concurrent 패키지에는 동시성을 고려한 컬렉션 클래스들(ConcurrentHashMap, CopyOnWriteArrayList 등)이 있으며, 복잡한 동기화 없이도 안전하게 사용할 수 있습니다.
-
 또한, ThreadLocal을 사용하여 동기화를 구현할 수 있습니다. ThreadLocal은 각 스레드마다 독립적인 변수를 가질 수 있도록 하는 클래스입니다. ThreadLocal 인스턴스는 각 스레드에서 자신만의 값을 가지며, 다른 스레드와 값을 공유하지 않습니다. 이를 통해 스레드 간의 간섭 없이 독립적인 상태를 유지할 수 있습니다.
+
+마지막으로, concurrent 패키지에는 동시성을 고려한 컬렉션 클래스들(ConcurrentHashMap, CopyOnWriteArrayList 등)이 있으며, 복잡한 동기화 없이도 안전하게 사용할 수 있습니다.
 
 ### Thread Local에 대해 설명해 주세요.
 

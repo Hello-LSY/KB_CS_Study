@@ -21,33 +21,33 @@ JVM의 Runtime Data Area에서 Heap 메모리 영역은 다음 그림과 같이 
 **Permanent**: Method Area의 메타 정보가 기록된 곳 
 
 __동작 방식__<br/>
-1. Stop the World    
+1. Stop the World<br/>
 GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업입니다. GC가 실행될 때는 GC를 실행하는 스레드를 제외한 모드 스레드들의 작업이 중단되고, GC가 완료되면 작업이 재개됩니다.
 
-2. Mark and Sweep    
+2. Mark and Sweep<br/>
 `Mark` : 사용되는 메모리와 사용되지 않는 메모리를 식별하는 작업    
 `Sweep` : Mark 단계에서 사용되지 않음으로 식별된 메모리를 해제하는 작업    
 
 Stop the World를 하고 GC는 스택의 변수 또는 객체를 스캔하면서 각각이 어떤 객체를 참조하고 있는지 탐색합니다. 사용되고 있는 메모리를 식별(Mark)하고, Mark되지 않은 객체들을 메모리에서 제거(Sweep)합니다. 
 
 __GC 종류__
-1. Minor GC    
+1. Minor GC<br/>
     Young 영역에 대한 GC, Eden 영역이 다 차면 발생합니다. 살아남은 객체는 Survivor 영역으로 옮겨집니다.    
    한 개의 Survivor 영역이 다 차면 다른 Survivor 영역으로 옮겨 1개의 Survivor 영역은 반드시 빈 상태가 되게 만듭니다. 
-2. Major GC
+2. Major GC<br/>
     Old 영역에 대한 GC, Young 영역에서 오래 살아남은 객체가 Old 영역으로 이동하여 Old 영역의 메모리가 부족해지면 Major GC가 발생합니다.
 
 __GC 알고리즘__    
-1. Serial GC
+1. Serial GC<br/>
 싱글스레드 애플리케이션을 위한 GC, Young 영역에서는 Mark Sweep 알고리즘을 수행한다. Old 영역에서는 Mark Sweep 알고리즘에 Compact 작업을 추가합니다. Compact란 Heap 영역을 정리하기 위한 단계로 유효한 객체를 한 곳으로 몰고 객체가 존재하지 않는 부분으로 만드는 방식입니다.
 
-2. Parallel GC    
+2. Parallel GC<br/>
 멀티스레드 애플리케이션을 위한 GC, 여러 개의 스레드를 통해 Parallel 하게 GC를 수행함으로써 GC의 오버헤드를 상당히 줄여줍니다. 그러나, 애플리케이션을 멈추는 것을 피하진 못합니다.
 
-3. CMS(Concurrent Mark Sweep) GC
+3. CMS(Concurrent Mark Sweep) GC<br/>
 Parallel GC와 마찬가지로 여러 개의 스래드를 이용합니다. 다른 GC와는 다르게 Mark Sweep 알고리즘을 Concurrent하게 수행합니다. 애플리케이션의 지연 시간을 최소화하여 애플리케이션이 구종 중일 때 멈추지 않고 GC를 이용 가능합니다. 그러나 다른 GC 방식보다 하드웨어 자원을 더 많이 필요로 하며 compact 단계를 수행하지 않아 메모리 파편화가 심해질 수도 있습니다. 만약 이 때문에 메모리 공간이 부족해지면 Serial GC와 똑같이 동작합니다.
 
-4. G1(Garbage First) GC
+4. G1(Garbage First) GC<br/>
 장기적으로 문제될 수 있는 CMS GC를 대체하기 위해 개발되었고, Java 7부터 지원합니다.
 기존 GC 알고리즘 알고리즘은 Heap 영역을 Young과 Old 영역으로 나누었지만 G1 GC는 물리적으로 메모리 공간을 나누지 않습니다. 대신 Region 이라는 개념을 도입하여 Heap을 균등하게 여러 지역으로 나누고, 각 지역을 역할과 함께 논리적으로 구분(Eden, Survivor, Old)하여 객체를 할당합니다. 더해서 Humonogous와 Availab/e/Unused 라는 역할을 추가하여 Region 크기의 50%를 초과하면 Humonogous, 사용되지 않는 Region을 Available/Unused 로 지정합니다. 이후 Gargabe가 많은 Region에 대해 우선적으로 GC를 수행합니다. 
 
